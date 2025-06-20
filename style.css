@@ -1,0 +1,12 @@
+.top-nav {
+    background-color: red;
+}
+
+.card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+    border: 2px solid blue;
+}
