@@ -1,12 +1,94 @@
-.top-nav {
-    background-color: red;
+/* main page stylings */
+
+@font-face {
+    font-family: 'Raleway Regular';
+    font-weight: 400;
+    src: url('media/raleway-regular-webfont.woff') format('woff'),
+         url('media/raleway-regular-webfont.woff2') format('woff2');
 }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+
+:root {
+    --dark-red: rgb(67, 0, 0);
+    --light-blue: #669bbc;
+    --dark-blue: #003049;;
+}
+
+/* top navigation */
+
+.top-nav {
+    color: var(--dark-red);
+    background-color: white;
+    font-family: 'Raleway Regular', system-ui, -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+    'Helvetica Neue', sans-serif
+}
+
+.top-nav img {
+    height: 36px;
+    width: 36px;
+}
+
+.top-nav h1 {
+    padding-top: 24px;
+}
+
+.nav-logo,
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    gap: 12px;
+}
+
+.user {
+    gap: 8px;
+}
+
+.user img {
+    border-radius: 90px;
+    background-color: var(--light-blue);
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--light-blue);
+    position: sticky;
+    top: 0;
+}
+
+/* body & cards */
 
 .card-body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
 }
 
 .card {
-    border: 2px solid blue;
+    background-color: white;
+    border-radius: 8px;
+    border: solid 1px var(--light-blue);
+}
+
+.card h1 {
+    font-family: system-ui, -apple-system, 
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--dark-blue);
 }
