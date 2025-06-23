@@ -18,17 +18,30 @@
         </div>
         <button id="add-btn">Add new book</button>
         <dialog id="new-book-dialog">
-            <h1>Add new book</h1>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title">
-            <label for="author">Author</label>
-            <input type="text" id="author" name="author">
-            <label for="pages">Pages</label>
-            <input type="text" id="pages" name="pages">
-            <label for="has-read">Have you read it already?</label>
-            <input type="radio" id="has-read" name="has-read">
-            <button id="dialog-submit">Submit</button>
-            <button id="dialog-close">Close</button>
+            <form class="new-book-form">
+                <h1>Add new book</h1>
+                <div class="dialog-input">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="">
+                </div>
+                <div class="dialog-input">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" value="">
+                </div>
+                <div class="dialog-input">
+                    <label for="pages">Pages</label>
+                    <input type="text" id="pages" name="pages"value="">
+                </div>
+                <div class="dialog-input">
+                    <label for="has-read">Have you read it already?</label>
+                    <input type="radio" id="has-read-yes" name="has-read">
+                    <div class="radio-input">Yes</div>
+                    <input type="radio" id="has-read-no" name="has-read">
+                    <div class="radio-input">No</div>
+                </div>
+                <input id="dialog-submit" type="submit">Submit</input>
+                <button id="dialog-close">Close</button>
+            </form>
         </dialog>
     </div>
     <div class="card-body" id="card-body">

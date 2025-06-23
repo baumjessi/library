@@ -80,3 +80,15 @@ newBookDialog.addEventListener("click", e => {
    newBookDialog.close()
   }
 })
+
+let newBookForm = document.getElementById("new-book-form");
+let submitBookBtn = document.getElementById("dialog-submit");
+document.addEventListener('DomContentLoaded', e => {
+  submitBookBtn.addEventListener("click", e => {
+    e.preventDefault();
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let hasRead = true;
+    addBookToLibrary(title, author, pages, hasRead);
+})});

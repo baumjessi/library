@@ -40,10 +40,6 @@ body {
     width: 36px;
 }
 
-.top-nav h1 {
-    padding-top: 24px;
-}
-
 .nav-logo,
 .user {
     display: flex;
@@ -72,6 +68,18 @@ body {
     top: 0;
 }
 
+#add-btn {
+    background-color: var(--dark-blue);
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'Raleway Regular', system-ui, -apple-system, BlinkMacSystemFont, 
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dialog-content {
+    display: flex;
+}
 /* body & cards */
 
 .card-body {
@@ -87,8 +95,9 @@ body {
 }
 
 .card h1 {
-    font-family: system-ui, -apple-system, 
+    font-family: 'Raleway Regular', system-ui, -apple-system, 
     BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--dark-blue);
 }
+
