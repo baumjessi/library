@@ -28,7 +28,7 @@ console.table(myLibrary);
 
 let cardBody = document.getElementById("card-body");
 
-function displayBook() {
+function displayAllBooks() {
   myLibrary.forEach(Book => {
     let newCard = document.createElement('div');
     newCard.className = "card";
@@ -53,7 +53,7 @@ function displayBook() {
     }
 )};
 
-displayBook(myLibrary);
+displayAllBooks(myLibrary);
 
 const addBtn = document.getElementById("add-btn");
 const newBookDialog = document.getElementById("new-book-dialog");
@@ -83,12 +83,41 @@ newBookDialog.addEventListener("click", e => {
 
 let newBookForm = document.getElementById("new-book-form");
 let submitBookBtn = document.getElementById("dialog-submit");
-document.addEventListener('DomContentLoaded', e => {
   submitBookBtn.addEventListener("click", e => {
     e.preventDefault();
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
+    let title = document.getElementById('title');
+    let author = document.getElementById('author');
+    let pages = document.getElementById('pages');
     let hasRead = true;
-    addBookToLibrary(title, author, pages, hasRead);
-})});
+    let newBook = {
+      title: title.value,
+      author: author.value,
+      pages: pages.value,
+      hasRead: hasRead,
+      UUID: crypto.randomUUID(),
+    }
+    myLibrary.push(newBook);
+
+    let newCard = document.createElement('div');
+    newCard.className = "card";
+    cardBody.appendChild(newCard);
+    let newTitle = document.createElement('h1');
+    newTitle.textContent = `${title.value}`;
+    newCard.appendChild(newTitle);
+    let newAuthor = document.createElement('p');
+    newAuthor.textContent = `Author: ${author.value}`;
+    newCard.appendChild(newAuthor);
+    let newPages = document.createElement('p');
+    newPages.textContent = `Pages: ${pages.value}`;
+    newCard.appendChild(newPages);
+    let newHasRead = document.createElement('p');
+    newCard.appendChild(newHasRead);
+    if (newHasRead = true) {
+      newHasRead.textContent = "Read! :)";
+    }
+    else if (newHasRead = false) {
+      newHasRead.textContent = "Not read yet. :(";
+    }
+    console.table(myLibrary);
+    newBookDialog.close();
+});
