@@ -50,10 +50,22 @@ function displayAllBooks() {
     else if (hasRead = false) {
       hasRead.textContent = "Not read yet. :(";
     }
+    let removeBtn = document.createElement('button');
+    removeBtn.textContent = "Remove";
+    removeBtn.className = "remove-btn";
+    newCard.appendChild(removeBtn);
     }
 )};
 
 displayAllBooks(myLibrary);
+
+let removeBtn = document.querySelectorAll("button.remove-btn");
+let removeBtnArray = Array.from(removeBtn);
+
+removeBtnArray.forEach(button => {
+  button.addEventListener("click", e => {
+  window.alert("Poopee Peepee");
+  })});
 
 const addBtn = document.getElementById("add-btn");
 const newBookDialog = document.getElementById("new-book-dialog");
@@ -118,6 +130,10 @@ let submitBookBtn = document.getElementById("dialog-submit");
     else if (newHasRead = false) {
       newHasRead.textContent = "Not read yet. :(";
     }
+    let removeBtn = document.createElement('button');
+    removeBtn.textContent = "Remove";
+    removeBtn.className = "remove-btn";
+    newCard.appendChild(removeBtn);
     console.table(myLibrary);
     newBookDialog.close();
 });
