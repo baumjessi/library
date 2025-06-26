@@ -32,6 +32,7 @@ function displayAllBooks() {
   myLibrary.forEach(Book => {
     let newCard = document.createElement('div');
     newCard.className = "card";
+    newCard.setAttribute("data-UUID", Book.UUID);
     cardBody.appendChild(newCard);
     let title = document.createElement('h1');
     title.textContent = `${Book.title}`;
@@ -51,6 +52,7 @@ function displayAllBooks() {
       hasRead.textContent = "Not read yet. :(";
     }
     let removeBtn = document.createElement('button');
+    removeBtn.setAttribute("data-UUID", Book.UUID);
     removeBtn.textContent = "Remove";
     removeBtn.className = "remove-btn";
     newCard.appendChild(removeBtn);
@@ -148,11 +150,13 @@ let cardArray = Array.from(card);
 
 removeBtnArray.forEach(button => {
   button.addEventListener("click", e => {
-    cardArray.forEach(card => {
-    if (this.getAttribute("data-UUID") === card.getAttribute("data-UUID")) {
+    let buttonUUID = button.getAttribute("data-UUID");
+    console.log(buttonUUID);
+    card.forEach(card => {
+    if (card.getAttribute("data-UUID") === buttonUUID) {
       card.remove();
       const newLibrary = myLibrary.filter(book => book.UUID !== button.getAttribute("data-UUID"));
       myLibrary = newLibrary;
       console.log(myLibrary);
-    }
-    })})});
+    }})
+    })});
