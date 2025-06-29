@@ -8,23 +8,16 @@ function Book(title, author, pages, hasRead) {
   this.hasRead = hasRead;
   this.UUID = crypto.randomUUID();
   myLibrary.push(this);
-  console.log(this.title);
-  console.log(this.author);
-  console.log(this.pages);
-  console.log(this.hasRead);
-  console.log(this.UUID);
 }
 
 function addBookToLibrary(title, author, pages, hasRead) {
     const newBook = new Book(title, author, pages, hasRead);
-    console.log(newBook);
 }
 
 addBookToLibrary("Great Value", "Jessi B.", 170, true);
 addBookToLibrary("Shrike House", "Jessi B.", 200, false);
 addBookToLibrary("Dune", "Frank Herbert", 700, false);
 
-console.table(myLibrary);
 
 let cardBody = document.getElementById("card-body");
 
@@ -43,7 +36,7 @@ function displayAllBooks() {
     let pages = document.createElement('p');
     pages.textContent = `Pages: ${Book.pages}`;
     newCard.appendChild(pages);
-    let hasRead = document.createElement('p');
+    let hasRead = document.createElement('button');
     newCard.appendChild(hasRead);
     if (hasRead = true) {
       hasRead.textContent = "Read! :)";
@@ -68,16 +61,22 @@ let submitBookBtn = document.getElementById("dialog-submit");
     let title = document.getElementById('title');
     let author = document.getElementById('author');
     let pages = document.getElementById('pages');
-    let hasRead = true;
+    let hasRead = document.getElementById('has-read');
+    if (hasRead.checked === true) {
+      hasRead.value = true;
+    }
+    else if (hasRead.checked === false) {
+      hasRead.value = false;
+    }
     let newBook = {
       title: title.value,
       author: author.value,
       pages: pages.value,
-      hasRead: hasRead,
+      hasRead: hasRead.value,
       UUID: crypto.randomUUID(),
     }
     myLibrary.push(newBook);
-
+  
     let newCard = document.createElement('div');
     newCard.className = "card";
     newCard.setAttribute("data-UUID", newBook.UUID);
@@ -93,11 +92,12 @@ let submitBookBtn = document.getElementById("dialog-submit");
     newCard.appendChild(newPages);
     let newHasRead = document.createElement('p');
     newCard.appendChild(newHasRead);
-    if (newHasRead = true) {
-      newHasRead.textContent = "Read! :)";
+    newHasRead.className = "hasReadToggle";
+    if (hasRead.checked === true) {
+      newHasRead.innerHTML = "Read! :)";
     }
-    else if (newHasRead = false) {
-      newHasRead.textContent = "Not read yet. :(";
+    else if (hasRead.checked === false) {
+      newHasRead.innerHTML = "Not read yet. :(";
     }
     let removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
@@ -109,11 +109,8 @@ let submitBookBtn = document.getElementById("dialog-submit");
       newCard.remove();
       const newLibrary = myLibrary.filter(book => book.UUID !== removeBtn.getAttribute("data-UUID"));
       myLibrary = newLibrary;
-      console.log(myLibrary);
       }
     });
-
-    console.table(myLibrary);
     newBookDialog.close();
 });
 
@@ -151,12 +148,19 @@ let cardArray = Array.from(card);
 removeBtnArray.forEach(button => {
   button.addEventListener("click", e => {
     let buttonUUID = button.getAttribute("data-UUID");
-    console.log(buttonUUID);
     card.forEach(card => {
     if (card.getAttribute("data-UUID") === buttonUUID) {
       card.remove();
       const newLibrary = myLibrary.filter(book => book.UUID !== button.getAttribute("data-UUID"));
       myLibrary = newLibrary;
-      console.log(myLibrary);
     }})
     })});
+
+let hasReadToggle = document.querySelectorAll('.has-read');
+let hasReadArray = Array.from(hasReadToggle);
+
+hasReadArray.forEach(toggle => {
+        toggle.addEventListener("click", e => {
+          window.alert("Poopy Peepy");
+      })
+      });
