@@ -55,8 +55,7 @@ function displayAllBooks() {
 displayAllBooks(myLibrary);
 
 let newBookForm = document.getElementById("new-book-form");
-let submitBookBtn = document.getElementById("dialog-submit");
-  submitBookBtn.addEventListener("click", e => {
+  newBookForm.addEventListener("submit", e => {
     e.preventDefault();
     let title = document.getElementById('title');
     let author = document.getElementById('author');
@@ -112,6 +111,7 @@ let submitBookBtn = document.getElementById("dialog-submit");
       }
     });
     newBookDialog.close();
+    newBookForm.reset();
 });
 
 const addBtn = document.getElementById("add-btn");
