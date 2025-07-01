@@ -36,13 +36,23 @@ function displayAllBooks() {
     let pages = document.createElement('p');
     pages.textContent = `Pages: ${Book.pages}`;
     newCard.appendChild(pages);
-    let hasRead = document.createElement('button');
-    newCard.appendChild(hasRead);
-    if (hasRead = true) {
-      hasRead.textContent = "Read! :)";
+
+    let newHasRead = document.createElement('input');
+    newHasRead.type = 'checkbox';
+    newHasRead.name = 'card-has-read';
+    newHasRead.className = 'card-has-read';
+    let hasReadLabel = document.createElement('label');
+    hasReadLabel.htmlFor = 'card-has-read';
+    newCard.appendChild(newHasRead);
+    newCard.appendChild(hasReadLabel);
+    if (Book.hasRead === true) {
+      newHasRead.value = true;
+      hasReadLabel.textContent = 'Read! :)'
+      newHasRead.checked = true
     }
-    else if (hasRead = false) {
-      hasRead.textContent = "Not read yet. :(";
+    else if (Book.hasRead === false) {
+      newHasRead.value = false;
+      hasReadLabel.textContent = 'Not read yet. :('
     }
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute("data-UUID", Book.UUID);
@@ -89,14 +99,22 @@ let newBookForm = document.getElementById("new-book-form");
     let newPages = document.createElement('p');
     newPages.textContent = `Pages: ${pages.value}`;
     newCard.appendChild(newPages);
-    let newHasRead = document.createElement('p');
+    let newHasRead = document.createElement('input');
+    newHasRead.type = 'checkbox';
+    newHasRead.name = 'card-has-read';
+    newHasRead.className = 'card-has-read';
+    let hasReadLabel = document.createElement('label');
+    hasReadLabel.htmlFor = 'card-has-read';
     newCard.appendChild(newHasRead);
-    newHasRead.className = "hasReadToggle";
+    newCard.appendChild(hasReadLabel);
     if (hasRead.checked === true) {
-      newHasRead.innerHTML = "Read! :)";
+      newHasRead.value = true;
+      hasReadLabel.textContent = 'Read! :)'
+      newHasRead.checked = true
     }
     else if (hasRead.checked === false) {
-      newHasRead.innerHTML = "Not read yet. :(";
+      newHasRead.value = false;
+      hasReadLabel.textContent = 'Not read yet. :('
     }
     let removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
@@ -125,7 +143,9 @@ addBtn.addEventListener("click", (e)=> {
 const dialogCloseBtn = document.getElementById("dialog-close");
 
 dialogCloseBtn.addEventListener("click", e => {
+  e.preventDefault();
   newBookDialog.close();
+  newBookForm.reset();
 });
 
 newBookDialog.addEventListener("click", e => {
@@ -155,12 +175,3 @@ removeBtnArray.forEach(button => {
       myLibrary = newLibrary;
     }})
     })});
-
-let hasReadToggle = document.querySelectorAll('.has-read');
-let hasReadArray = Array.from(hasReadToggle);
-
-hasReadArray.forEach(toggle => {
-        toggle.addEventListener("click", e => {
-          window.alert("Poopy Peepy");
-      })
-      });
