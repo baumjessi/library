@@ -14,9 +14,11 @@ function addBookToLibrary(title, author, pages, hasRead) {
     const newBook = new Book(title, author, pages, hasRead);
 }
 
-addBookToLibrary("Great Value", "Jessi B.", 170, true);
-addBookToLibrary("Shrike House", "Jessi B.", 200, false);
-addBookToLibrary("Dune", "Frank Herbert", 700, false);
+addBookToLibrary("Helter Skelter", "Vincent Bugliosi", 689, true);
+addBookToLibrary("Cruddy", "Lynda Barry", 320, true);
+addBookToLibrary("Dune", "Frank Herbert", 700, true);
+addBookToLibrary("1Q84", "Haruki Murikami", 272, false);
+addBookToLibrary("Atomic Habits", "James Clear", 320, false);
 
 
 let cardBody = document.getElementById("card-body");
@@ -36,30 +38,39 @@ function displayAllBooks() {
     let pages = document.createElement('p');
     pages.textContent = `Pages: ${Book.pages}`;
     newCard.appendChild(pages);
-
+    let checkboxDiv = document.createElement('div');
+    let readAndRemove = document.createElement('div');
+    readAndRemove.className = 'read-and-remove';
+    newCard.appendChild(readAndRemove);
+    readAndRemove.appendChild(checkboxDiv);
+    checkboxDiv.className = "checkbox-div";
     let newHasRead = document.createElement('input');
     newHasRead.type = 'checkbox';
     newHasRead.name = 'card-has-read';
     newHasRead.className = 'card-has-read';
+    let newCheckboxId = 'card-has-read-' + Book.UUID;
+    newHasRead.id = newCheckboxId;
     let hasReadLabel = document.createElement('label');
-    hasReadLabel.htmlFor = 'card-has-read';
-    newCard.appendChild(newHasRead);
-    newCard.appendChild(hasReadLabel);
+    hasReadLabel.className = 'has-read-label';
+    hasReadLabel.htmlFor = newCheckboxId;
+    checkboxDiv.appendChild(newHasRead);
+    checkboxDiv.appendChild(hasReadLabel);
+    hasReadLabel.textContent = 'Read! :)'
     if (Book.hasRead === true) {
       newHasRead.value = true;
-      hasReadLabel.textContent = 'Read! :)'
       newHasRead.checked = true
     }
     else if (Book.hasRead === false) {
       newHasRead.value = false;
-      hasReadLabel.textContent = 'Not read yet. :('
     }
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute("data-UUID", Book.UUID);
     removeBtn.textContent = "Remove";
     removeBtn.className = "remove-btn";
-    newCard.appendChild(removeBtn);
+    readAndRemove.appendChild(removeBtn);
     }
+    
+
 )};
 
 displayAllBooks(myLibrary);
@@ -99,28 +110,37 @@ let newBookForm = document.getElementById("new-book-form");
     let newPages = document.createElement('p');
     newPages.textContent = `Pages: ${pages.value}`;
     newCard.appendChild(newPages);
+    let readAndRemove = document.createElement('div');
+    readAndRemove.className = 'read-and-remove';
+    newCard.appendChild(readAndRemove);
+    let checkboxDiv = document.createElement('div');
+    checkboxDiv.className = "checkbox-div";
+    readAndRemove.appendChild(checkboxDiv);
     let newHasRead = document.createElement('input');
     newHasRead.type = 'checkbox';
     newHasRead.name = 'card-has-read';
     newHasRead.className = 'card-has-read';
+    let newCheckboxId = 'card-has-read-' + Book.UUID;
+    newHasRead.id = newCheckboxId;
     let hasReadLabel = document.createElement('label');
     hasReadLabel.htmlFor = 'card-has-read';
-    newCard.appendChild(newHasRead);
-    newCard.appendChild(hasReadLabel);
+    hasReadLabel.className = 'has-read-label';
+    hasReadLabel.htmlFor = newCheckboxId;
+    checkboxDiv.appendChild(newHasRead);
+    checkboxDiv.appendChild(hasReadLabel);
+    hasReadLabel.textContent = 'Read! :)'
     if (hasRead.checked === true) {
       newHasRead.value = true;
-      hasReadLabel.textContent = 'Read! :)'
       newHasRead.checked = true
     }
     else if (hasRead.checked === false) {
       newHasRead.value = false;
-      hasReadLabel.textContent = 'Not read yet. :('
     }
     let removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
     removeBtn.className = "remove-btn";
     removeBtn.setAttribute("data-UUID", newBook.UUID);
-    newCard.appendChild(removeBtn);
+    readAndRemove.appendChild(removeBtn);
     removeBtn.addEventListener("click", e => {
       if (removeBtn.getAttribute("data-UUID") === newCard.getAttribute("data-UUID")) {
       newCard.remove();
@@ -156,7 +176,8 @@ newBookDialog.addEventListener("click", e => {
     e.clientY < dialogDimensions.top ||
     e.clientY > dialogDimensions.bottom
   ) {
-   newBookDialog.close()
+   newBookDialog.close();
+  newBookForm.reset();
   }
 })
 

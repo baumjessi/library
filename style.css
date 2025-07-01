@@ -75,10 +75,17 @@ body {
 #add-btn {
     background-color: var(--dark-blue);
     color: white;
-    border-radius: 8px;
+    border-radius: 90px;
     padding: 8px;
     font-family: 'Raleway Regular', system-ui, -apple-system, BlinkMacSystemFont, 
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition-duration: 350ms;  
+    padding: 24px;
+}
+
+#add-btn:hover {
+    background-color: black;
+    cursor: pointer;
 }
 
 dialog {
@@ -118,6 +125,13 @@ dialog::backdrop {
     font-family: 'Raleway Regular', system-ui, -apple-system, BlinkMacSystemFont, 
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 
     sans-serif;
+    transition-duration: 350ms;  
+}
+
+#dialog-submit:hover,
+#dialog-close:hover {
+    background-color: black;
+    cursor: pointer;
 }
 
 .dialog-buttons {
@@ -136,6 +150,14 @@ dialog::backdrop {
     font-size: .75rem;
     font-weight: bold;
     gap: 4px;
+}
+
+.dialog-checkbox input:hover {
+    cursor: pointer;
+}
+
+.dialog-checkbox:hover {
+    cursor: pointer;
 }
 
 dialog h1 {
@@ -165,6 +187,7 @@ dialog h1 {
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--dark-blue);
     font-size: 1.25rem;
+    font-weight: bold;
 }
 
 .card p {
@@ -172,22 +195,52 @@ dialog h1 {
     BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
-    color: var(--dark-red);
+    color: var(--dark-blue);
 }
 
 .remove-btn {
     background-color: var(--dark-blue);
-    font-size: 1rem;
+    font-size: .75rem;
     color: white;
-    padding: 8px;
-    border-radius: 16px;
+    padding: 16px;
+    border-radius: 90px;
     border: none;
+    margin-left: 24px;
+    transition-duration: 350ms;
+    align-self: start;
 }
 
-.card-has-read label {
+.remove-btn:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.has-read-label {
     font-family: 'Raleway Regular', system-ui, -apple-system, 
     BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1rem;
+    font-size: .75rem;
     color: var(--dark-red);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-has-read {
+    height: .75rem;
+    padding: 4px;
+}
+
+.card-has-read:hover {
+    cursor: pointer;
+}
+
+.read-and-remove {
+    display: flex;
+    justify-content: space-between;
+    align-self: end;
+}
+
+.checkbox-div {
+    display: flex;
+    align-items: center;
 }
