@@ -1,18 +1,31 @@
 let myLibrary = [
 ];
 
-function Book(title, author, pages, hasRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead;
-  this.UUID = crypto.randomUUID();
-  myLibrary.push(this);
+class Book {
+  constructor(title, author, pages, hasRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead;
+    this.UUID = crypto.randomUUID();
+  }
+
+  addToLibrary() {
+    myLibrary.push(this);
+  }
 }
 
-function addBookToLibrary(title, author, pages, hasRead) {
-    const newBook = new Book(title, author, pages, hasRead);
-}
+let book1 = new Book("Helter Skelter", "Vincent Bugliosi", 689, true);
+let book2 = new Book("Cruddy", "Lynda Barry", 320, true);
+let book3 = new Book("Dune", "Frank Herbert", 700, true);
+let book4 = new Book("1Q84", "Haruki Murikami", 272, false);
+let book5 = new Book("Atomic Habits", "James Clear", 320, false);
+
+book1.addToLibrary();
+book2.addToLibrary();
+book3.addToLibrary();
+book4.addToLibrary();
+book5.addToLibrary();
 
 addBookToLibrary("Helter Skelter", "Vincent Bugliosi", 689, true);
 addBookToLibrary("Cruddy", "Lynda Barry", 320, true);
