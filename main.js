@@ -27,11 +27,6 @@ book3.addToLibrary();
 book4.addToLibrary();
 book5.addToLibrary();
 
-addBookToLibrary("Helter Skelter", "Vincent Bugliosi", 689, true);
-addBookToLibrary("Cruddy", "Lynda Barry", 320, true);
-addBookToLibrary("Dune", "Frank Herbert", 700, true);
-addBookToLibrary("1Q84", "Haruki Murikami", 272, false);
-addBookToLibrary("Atomic Habits", "James Clear", 320, false);
 
 
 let cardBody = document.getElementById("card-body");
