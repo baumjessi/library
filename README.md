@@ -2,7 +2,7 @@
 By Jessi B. for the Odin Project
 
 ## What is this?
-[Click for live link!](https://baumjessi.github.io/library)
+[Click for live link!](https://murdermart.github.io/library)
 
 This library app is a practice project centered on the basics of object constructors and prototypes. 
 The user can add/remove books to/from the library using the form-generating "add" button. The
